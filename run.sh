@@ -1,4 +1,7 @@
 #!/bin/bash
+
+LIB_PATH="LD_LIBRARY_PATH=$HOME/gcc-6.1.0/lib:/home/yuan/gcc-6.1.0/lib64/:$LD_LIBRARY_PATH"
+
 action=$1
 var=$2
 trace=$3
@@ -14,7 +17,7 @@ fi
 if [ "$trace" == "--trace" ]
 then
 	trace="-n1"
-	sudo="sudo"
+	sudo="sudo $LIB_PATH"
 else
 	trace="-n0"
 fi

@@ -46,7 +46,6 @@ class coordinator {
     bh->load();
   }
 
-
   void eval(const config conf) {
     if (!conf.recovery) {
       execute(conf);
