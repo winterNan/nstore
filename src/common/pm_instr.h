@@ -22,7 +22,7 @@
 #include <sys/syscall.h>
 #include <string.h>
 
-#define LOC1 	__func__	/* str ["0"]: can be __func__, __FILE__ */	
+#define LOC1 	__func__	/* str ["0"]: can be __func__, __FILE__ */
 #define LOC2	__LINE__        /* int [0]  : can be __LINE__ */
 
 #define m_out stdout
@@ -58,17 +58,17 @@ extern unsigned long long get_tot_epoch_count(void);
 #ifdef _ENABLE_TRACE
 /* Custom user-mode, blocking tracer */
 #define time_since_start							\
-({									　　　　　　　　　　　　　　　　\
+({					                                \
   gettimeofday(&mtm_time, NULL);					\
   (((1000000*mtm_time.tv_sec + 				     	\
-    mtm_time.tv_usec)				　　　　　　　　　　　　　　　　\
+    mtm_time.tv_usec)				                \
   - (glb_start_time)) - buf_drain_period);			\
 })
 
 #define TENTRY_ID								\
 (mtm_tid == -1 ? 							\
   ({mtm_tid = syscall(SYS_gettid); mtm_tid;}) : mtm_tid), 	\
-(time_since_start)				
+(time_since_start)
 
 #define pm_trace_print(format, args ...)					\
 {										\
